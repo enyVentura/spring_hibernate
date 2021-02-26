@@ -58,4 +58,16 @@ public class User {
    public void setEmail(String email) {
       this.email = email;
    }
+
+   @OneToOne
+   @JoinColumn(name = "id",unique = true,nullable = false)
+   private Car shippingCar;
+
+   public Car getShippingCar() {
+      return shippingCar;
+   }
+
+   public void setShippingCar(Car shippingCar) {
+      this.shippingCar = shippingCar;
+   }
 }
