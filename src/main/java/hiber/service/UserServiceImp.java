@@ -17,13 +17,13 @@ public class UserServiceImp implements UserService {
 
    @Transactional
    @Override
-   public void add(User user) {
+   public void addUser(User user) {
       userDao.add(user);
    }
 
    @Transactional
    @Override
-   public void addCarService(Car car) {
+   public void addCar(Car car) {
       userDao.addCar(car);
    }
 
@@ -33,4 +33,9 @@ public class UserServiceImp implements UserService {
       return userDao.listUsers();
    }
 
+   @Transactional
+   @Override
+   public User findUserByCar(Car car) {
+      return userDao.findByCar(car);
+   }
 }

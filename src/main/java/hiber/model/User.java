@@ -19,6 +19,10 @@ public class User {
    @Column(name = "email")
    private String email;
 
+   @OneToOne
+   @JoinColumn(name = "id",unique = true,nullable = false)
+   private Car car;
+
    public User() {}
    
    public User(String firstName, String lastName, String email) {
@@ -59,15 +63,11 @@ public class User {
       this.email = email;
    }
 
-   @OneToOne
-   @JoinColumn(name = "id",unique = true,nullable = false)
-   private Car shippingCar;
-
-   public Car getShippingCar() {
-      return shippingCar;
+   public Car getCar() {
+      return car;
    }
 
-   public void setShippingCar(Car shippingCar) {
-      this.shippingCar = shippingCar;
+   public void setCar(Car shippingCar) {
+      this.car = shippingCar;
    }
 }

@@ -21,11 +21,11 @@ public class MainApp {
       userService.add(new User("User3", "Lastname3", "user3@mail.ru"));*/
      // userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
 
-      User user=new User("User4", "Lastname4", "user4@mail.ru");
+      User user=new User("Eugene", "Kashitsyn", "user@mail.ru");
       Car car=new Car("BMW",3);
-      user.setShippingCar(car);
-      userService.add(user);
-      userService.addCarService(car);
+      user.setCar(car); //связывание
+      userService.addUser(user);
+      userService.addCar(car);
 
       List<User> users = userService.listUsers();
       for (User usr : users) {
@@ -33,10 +33,10 @@ public class MainApp {
          System.out.println("First Name = "+usr.getFirstName());
          System.out.println("Last Name = "+usr.getLastName());
          System.out.println("Email = "+usr.getEmail());
-         System.out.println("Car:\n"+"model = "+usr.getShippingCar().getModel()+"\nseries = "+usr.getShippingCar().getSeries());
+         System.out.println("Car:\n"+"model = "+usr.getCar().getModel()+"\nseries = "+usr.getCar().getSeries());
          System.out.println();
       }
-
+      System.out.println(userService.findUserByCar(new Car("BMW",3)));
       context.close();
    }
 }

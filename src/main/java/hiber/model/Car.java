@@ -16,16 +16,26 @@ public class Car {
     @Column(name = "series")
     private int series;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    @OneToOne(mappedBy = "car")
+    private User user;
+    
     public Car() {
     }
 
     public Car(String model, int series) {
         this.model = model;
         this.series = series;
+    }
+
+    public Car(String model, int series, Long id, User user) {
+        this.model = model;
+        this.series = series;
+        this.id = id;
+        this.user = user;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -46,16 +56,6 @@ public class Car {
 
     public void setSeries(int series) {
         this.series = series;
-    }
-
-    @OneToOne(mappedBy = "shippingCar")
-    private User user;
-
-    public Car(String model, int series, Long id, User user) {
-        this.model = model;
-        this.series = series;
-        this.id = id;
-        this.user = user;
     }
 
     public Car(User user) {
